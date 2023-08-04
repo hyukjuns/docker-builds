@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Information</title>
+    <style>
+        h1 {
+            color: #333;
+            font-size: 20px;
+        }
+
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Server Information:</h1>
+    <pre>
+        {% for key, value in server_info.items() %}
+            {{ key }}: {{ value }}<br>
+        {% endfor %}
+    </pre>
+
+    <h1>Client Request Header:</h1>
+    <pre>
+        {% for key, value in client_request_header %}
+            {{ key }}: {{ value }}<br>
+        {% endfor %}
+    </pre>
+
+    <h1>Server Response Headers:</h1>
+    <pre>
+        {% for key, value in response_headers.items() %}
+            {{ key }}: {{ value }}<br>
+        {% endfor %}
+    </pre>
+</body>
+</html>

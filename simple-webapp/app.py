@@ -23,6 +23,5 @@ def index():
     return render_template('index.html', client_request_header=client_request_header, server_info=server_info, response_headers=response_headers)
 
 # flask default port=5000
-# changed port=80
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80, debug=True)
+    app.run(host="0.0.0.0")

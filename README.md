@@ -1,6 +1,5 @@
 # Dockerfile Samples
 
-# Cheat Sheet
 ```
 # Container Monitoring
 docker stats <CONTAINER_ID>

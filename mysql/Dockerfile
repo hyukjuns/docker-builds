@@ -1,0 +1,10 @@
+FROM mysql:8.2.0
+
+ADD scheme.sql /docker-entrypoint-initdb.d
+
+ENV MYSQL_ROOT_PASSWORD=
+ENV MYSQL_DATABASE=
+ENV MYSQL_USER=
+ENV MYSQL_PASSWORD=
+
+EXPOSE 3306

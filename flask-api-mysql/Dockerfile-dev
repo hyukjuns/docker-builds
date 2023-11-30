@@ -1,3 +1,4 @@
+# Dev
 FROM python:3.11-slim
 
 # Create non-root user and working directory
@@ -8,7 +9,8 @@ USER python
 WORKDIR /home/python
 
 # Copy Source files
-COPY . /home/python
+COPY requirements.txt .
+COPY ./*.py .
 
 # Install Packages
 RUN pip install -r requirements.txt
@@ -17,7 +19,7 @@ RUN pip install -r requirements.txt
 ENV PATH="/home/python/.local/bin:$PATH"
 
 # Expression PORT
-EXPOSE 8000
+EXPOSE 5000
 
-# Run Application
-CMD [ "gunicorn", "-c", "gunicorn_config.py", "main:app" ]
+# Run Application in local for development
+CMD [ "python", "app.py" ]

@@ -1,11 +1,31 @@
 # Python api server
+### Dev: docker-compose.yml
+- Dockerfile-dev
+    - db.env: sql 접속 정보
+    - service:
+        - app: flask api
+        - db: mysql
+
+### Prod: Dockerfile
+- Dockerfile
+    - sql 접속정보: 환경변수로 입력 필요
+
+### mysql
+- db scheme 초기 세팅 -> scheme.sql
+
 ### Usage
 1. DB 정보 환경변수 설정
+```
+export MYSQL_DATABASE_USER=userid
+export MYSQL_DATABASE_PASSWORD=userpass
+export MYSQL_DATABASE_DB=dbname
+export MYSQL_DATABASE_HOST=dbhost
+```
 2. 앱실행
     - 개발환경: Debug 모드
     - 운영환경: gunicorn 사용
 
-
+### ETC
 - get env from os
 ```
 import os

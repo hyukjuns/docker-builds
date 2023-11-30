@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mysql:
+    build: 
+      context: ./mysql
+    ports:
+      - "3306:3306"
+  app:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile-dev
+    ports:
+      - "8000:5000"
+    env_file:
+      - ./db.env

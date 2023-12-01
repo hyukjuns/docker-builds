@@ -1,4 +1,11 @@
 # Python api server
+### dockercompose
+```
+# up and build
+docker compose up -d --build
+```
+- [networking in compose](https://docs.docker.com/compose/networking/)
+
 ### Dev: docker-compose.yml
 - Dockerfile-dev
     - db.env: sql 접속 정보

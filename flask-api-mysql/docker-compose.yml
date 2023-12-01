@@ -11,5 +11,10 @@ services:
       dockerfile: ./Dockerfile-dev
     ports:
       - "8000:5000"
-    env_file:
-      - ./db.env
+    # env_file:
+    #   - ./db.env
+    environment:
+      - MYSQL_DATABASE_USER=dbuser
+      - MYSQL_DATABASE_PASSWORD=dbpass
+      - MYSQL_DATABASE_DB=playerdb
+      - MYSQL_DATABASE_HOST=mysql # mysql service name

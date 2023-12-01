@@ -14,8 +14,12 @@ COPY ./*.py .
 # Install Packages
 RUN pip install -r requirements.txt
 
-# Setting PATH
+# Setting PATH and DB Info
 ENV PATH="/home/python/.local/bin:$PATH"
+ENV MYSQL_DATABASE_USER="dbuser" \
+    MYSQL_DATABASE_PASSWORD="dbpass" \
+    MYSQL_DATABASE_DB="playerdb" \
+    MYSQL_DATABASE_HOST="host.docker.internal"
 
 # Expression PORT
 EXPOSE 8000

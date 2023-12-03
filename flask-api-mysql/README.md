@@ -23,10 +23,10 @@ docker compose up -d --build
 ### Usage
 1. DB 정보 환경변수 설정
 ```
-export MYSQL_DATABASE_USER=userid
-export MYSQL_DATABASE_PASSWORD=userpass
-export MYSQL_DATABASE_DB=dbname
-export MYSQL_DATABASE_HOST=dbhost
+export MYSQL_DATABASE_USER=
+export MYSQL_DATABASE_PASSWORD=
+export MYSQL_DATABASE_DB=
+export MYSQL_DATABASE_HOST=
 ```
 2. 앱실행
     - 개발환경: Debug 모드

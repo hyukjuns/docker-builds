@@ -14,7 +14,7 @@ services:
     # env_file:
     #   - ./db.env
     environment:
-      - MYSQL_DATABASE_USER=dbuser
-      - MYSQL_DATABASE_PASSWORD=dbpass
-      - MYSQL_DATABASE_DB=playerdb
-      - MYSQL_DATABASE_HOST=mysql # mysql service name
+      - MYSQL_DATABASE_USER=
+      - MYSQL_DATABASE_PASSWORD=
+      - MYSQL_DATABASE_DB=
+      - MYSQL_DATABASE_HOST= # mysql service name

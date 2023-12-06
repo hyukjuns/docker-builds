@@ -1,19 +1,21 @@
-import os
 import multiprocessing
 
+# log
+accesslog = '-'
+
+errorlog = '_'
+
 # Worker and Thread
-workers = multiprocessing.cpu_count() * 2
+workers = multiprocessing.cpu_count() * 2 + 1
 
-threads = int(os.environ.get('GUNICORN_THREADS', '4'))
-
-# Socket and log
-timeout = int(os.environ.get('GUNICORN_TIMEOUT', '120'))
-
-bind = os.environ.get('GUNICORN_BIND', '0.0.0.0:8000')
+threads = 4
 
 max_requests = 5000
 
-accesslog = '-'
+# Socket
+timeout = 120
+
+bind = '0.0.0.0:8000'
 
 # ETC
 forwarded_allow_ips = '*'

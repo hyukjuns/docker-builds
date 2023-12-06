@@ -1,38 +1,44 @@
 # Python api server
-### dockercompose
-```
-# up and build
-docker compose up -d --build
-```
-- [networking in compose](https://docs.docker.com/compose/networking/)
 
-### Dev: docker-compose.yml
-- Dockerfile-dev
-    - db.env: sql 접속 정보
-    - service:
-        - app: flask api
-        - db: mysql
+Client -> Gunicorn -> Flask --CRUD--> MySQL
 
-### Prod: Dockerfile
-- Dockerfile
-    - sql 접속정보: 환경변수로 입력 필요
+### Prerequisite - MySQL
+- MySQL 8.2.0
+- Setup
+    1. 데이터베이스 셋업
+        - 환경변수 주입
+        - 스키마 초기화
+    2. 이미지 빌드 후 실행
+        - ```docker run -d -p 3306:3306 IMAGE```
 
-### mysql
-- db scheme 초기 세팅 -> scheme.sql
+### Required Environment Variable
+- 데이터베이스 Profile 정보
+    ```
+    MYSQL_DATABASE_USER
+    MYSQL_DATABASE_PASSWORD
+    MYSQL_DATABASE_DB
+    MYSQL_DATABASE_HOST
+    ```
+### Dockerfile - Production
+- Setup
+    1. Dockerfile에 DB를 위한 환경변수 세팅
+    2. 이미지 빌드 후 실행
+        - ```docker build -t REPO/NAME:TAG . ```
+        - ```docker run -d -p HOST:CONTAINER IMAGE```
 
-### Usage
-1. DB 정보 환경변수 설정
-```
-export MYSQL_DATABASE_USER=
-export MYSQL_DATABASE_PASSWORD=
-export MYSQL_DATABASE_DB=
-export MYSQL_DATABASE_HOST=
-```
-2. 앱실행
-    - 개발환경: Debug 모드
-    - 운영환경: gunicorn 사용
+### Docker-Compose - Dev
+- Setup
+    1. Compose 파일에 DB를 위한 환경변수 세팅
+    2. 이미지 빌드 후 실행
+        - ```docker compose up -d --build```
 
-### ETC
+### Local - Dev
+- Setup
+    1. Application을 실행할 Shell에 DB를 위한 환경변수 세팅 (export)
+    2. Shell에서 실행
+        - ```python app.py```
+
+### Flask
 - get env from os
 ```
 import os
@@ -54,12 +60,13 @@ print(os.getenv('KEY_THAT_MIGHT_EXIST', default_value))
 request.args.get('parameter')
 
 # data from raw data
+request.get_data()
 
 # data from form data
 request.form.get('value')
 ```
 
-- gunicron
+- gunicron up
 ```
 # start server
 gunicorn --config gunicorn_config.py app:app

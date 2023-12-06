@@ -6,7 +6,7 @@ ENV MYSQL_DATABASE=
 ENV MYSQL_USER=
 ENV MYSQL_PASSWORD=
 
-# DB Setup 2: Add to entrypoint
+# DB Setup 2: Add SQLFile to entrypoint
 ADD scheme.sql /docker-entrypoint-initdb.d
 
 EXPOSE 3306

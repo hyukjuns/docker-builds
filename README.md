@@ -11,6 +11,6 @@ docker inspect <CONTAINER_ID>
 docker cp <CONTAINER_ID>:<PATH> <HOST_PATH>
 
 # Kill All Containers
-docker rm -f $(docker ps -qa)
+docker rm -f $(docker ps -aq)
 
 ```
